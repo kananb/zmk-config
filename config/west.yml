@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/caksoylar
     - name: grassfedreeve
       url-base: https://github.com/grassfedreeve
+    - name: ssbb
+      url-base: https://github.com/ssbb
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -17,5 +19,8 @@ manifest:
     - name: zmk-keyboards-akohekohe
       remote: grassfedreeve
       revision: main
+    - name: zmk-antecedent-morph
+      remote: ssbb
+      revision: v1
   self:
     path: config
