@@ -8,6 +8,7 @@
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <behaviors/rgbled_widget.dtsi>
 
 &soft_off { hold-time-ms = <1000>; };
 &sl { release-after-ms = <350>; };
@@ -197,7 +198,7 @@
             bindings = <
                     &kp Q           &kp GRAVE       &kp DQT         &none   &none           &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2
         &kp DLLR    &kp BSLH        &kp AT          &kp UNDER       &none   &none           &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &trans
-                    &kp PRCNT       &kp CARET       &kp HASH                                &bt BT_CLR      &none           &none
+                    &kp PRCNT       &kp CARET       &kp HASH                                &bt BT_CLR      &ind_bat        &ind_con
                                                             &trans                  &trans
             >;
         };
