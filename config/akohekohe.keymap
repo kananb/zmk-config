@@ -10,6 +10,8 @@
 #include <dt-bindings/zmk/outputs.h>
 
 &soft_off { hold-time-ms = <5000>; };
+&sl { release-after-ms = <350>; };
+&sk { release-after-ms = <350>; };
 
 / {
     combos {
@@ -23,32 +25,32 @@
 
         lalt {
             key-positions = <0 9>;
-            bindings = <&kp LALT>;
+            bindings = <&sk LALT>;
         };
 
         lsft {
             key-positions = <1 10>;
-            bindings = <&kp LSHFT>;
+            bindings = <&sk LSHFT>;
         };
 
         lctl {
             key-positions = <2 11>;
-            bindings = <&kp LCTRL>;
+            bindings = <&sk LCTRL>;
         };
 
         rctl {
             key-positions = <5 14>;
-            bindings = <&kp RCTRL>;
+            bindings = <&sk RCTRL>;
         };
 
         rsft {
             key-positions = <6 15>;
-            bindings = <&kp RSHFT>;
+            bindings = <&sk RSHFT>;
         };
 
         ralt {
             key-positions = <7 16>;
-            bindings = <&kp RALT>;
+            bindings = <&sk RALT>;
         };
 
         rgui {
