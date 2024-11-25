@@ -12,6 +12,7 @@
 &soft_off { hold-time-ms = <5000>; };
 &sl { release-after-ms = <350>; };
 &sk { release-after-ms = <350>; };
+&caps_word { continue-list = <UNDER MINUS BSPC DEL>; };
 
 / {
     combos {
@@ -96,6 +97,7 @@
         nav {
             key-positions = <24 25>;
             bindings = <&sl 1>;
+            slow-release;
         };
     };
 
@@ -168,7 +170,7 @@
             bindings = <
                     &kp J           &kp X           &kp Z           &none   &none           &kp BSPC        &kp SQT         &kp ENTER
         &sl 8       &sl 7           &sl 6           &kp W           &none   &none           &kp B           &sl 3           &sl 4           &sl 5
-                    &qu             &kp Q           &kp V                                   &kp K           &kp DOT         &kp COMMA
+                    &qu             &kp ESC         &kp V                                   &kp K           &kp COMMA       &kp DOT
                                                             &trans                  &trans
             >;
         };
@@ -193,7 +195,7 @@
 
         sym_ext {
             bindings = <
-                    &none           &kp GRAVE       &kp DQT         &none   &none           &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2
+                    &kp Q           &kp GRAVE       &kp DQT         &none   &none           &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2
         &kp DLLR    &kp BSLH        &kp AT          &kp UNDER       &none   &none           &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &trans
                     &kp PRCNT       &kp CARET       &kp HASH                                &bt BT_CLR      &none           &none
                                                             &trans                  &trans
