@@ -18,6 +18,16 @@
         compatible = "zmk,combos";
         timeout-ms = <50>;
 
+        lbspc {
+            key-positions = <11 20>;
+            bindings = <&kp BSPC>;
+        };
+
+        lent {
+            key-positions = <10 19>;
+            bindings = <&kp ENTER>;
+        };
+
         lgui {
             key-positions = <9 18>;
             bindings = <&kp LGUI>;
@@ -56,6 +66,16 @@
         rgui {
             key-positions = <16 23>;
             bindings = <&kp RGUI>;
+        };
+
+        rent {
+            key-positions = <15 22>;
+            bindings = <&kp ENTER>;
+        };
+
+        rbspc {
+            key-positions = <14 21>;
+            bindings = <&kp BSPC>;
         };
 
         capsword {
@@ -105,10 +125,6 @@
         };
     };
 
-    // TODO:
-    //   - Add left-handed combos for bspc and enter
-    //   - Figure out what to do with the empty leader key
-
     behaviors {
         ad_lmagic: adaptive_magic_left {
             compatible = "zmk,behavior-antecedent-morph";
@@ -152,7 +168,7 @@
             bindings = <
                     &kp J           &kp X           &kp Z           &none   &none           &kp BSPC        &kp SQT         &kp ENTER
         &sl 8       &sl 7           &sl 6           &kp W           &none   &none           &kp B           &sl 3           &sl 4           &sl 5
-                    &qu             &none           &kp V                                   &kp K           &kp DOT         &kp COMMA
+                    &qu             &kp Q           &kp V                                   &kp K           &kp DOT         &kp COMMA
                                                             &trans                  &trans
             >;
         };
