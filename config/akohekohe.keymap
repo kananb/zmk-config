@@ -52,7 +52,7 @@
         };
 
         rgui {
-            key-positions = <16 25>;
+            key-positions = <16 23>;
             bindings = <&kp RGUI>;
         };
 
@@ -62,17 +62,17 @@
         };
 
         boot {
-            bindings = <&bootloader>;
             key-positions = <0 2 5 7>;
+            bindings = <&bootloader>;
         };
 
         soft_off {
+            key-positions = <18 20 21 23>;
             bindings = <&soft_off>;
-            key-positions = <18 20 23 25>;
         };
 
         nav {
-            key-positions = <21 22>;
+            key-positions = <24 25>;
             bindings = <&sl 1>;
         };
     };
@@ -112,6 +112,10 @@
     //   - Add left-handed combos for bspc and enter
     //   - Figure out what to do with the empty leader key
     //   - Add bluetooth functionality
+
+    behaviors {
+        // Implement magic keys
+    };
 
     keymap {
         compatible = "zmk,keymap";
@@ -164,7 +168,7 @@
         sym_ext {
             bindings = <
                     &kp TILDE       &none           &kp DQT         &none   &none           &none           &none           &none
-        &kp QMARK   &kp LPAR        &kp RPAR        &kp SEMI        &none   &none           &kp UNDER       &none           &none           &trans
+        &kp DLLR    &kp GRAVE       &kp AT          &kp BSLH        &none   &none           &kp UNDER       &none           &none           &trans
                     &kp PRCNT       &kp CARET       &kp HASH                                &none           &none           &none
                                                             &trans                  &trans
             >;
@@ -172,9 +176,9 @@
 
         num {
             bindings = <
-                    &none           &none           &none           &none   &none           &kp 3           &kp 5           &kp 7
-        &kp DOT     &kp MINUS       &trans          &kp PLUS        &none   &none           &kp 0           &kp 1           &kp 2           &kp 9
-                    &kp SLASH       &none           &kp ASTRK                               &kp 4           &kp 6           &kp 8
+                    &none           &none           &none           &none   &none           &kp N3          &kp N5          &kp N7
+        &kp DOT     &kp MINUS       &trans          &kp PLUS        &none   &none           &kp N0          &kp N1          &kp N2          &kp N9
+                    &kp SLASH       &none           &kp ASTRK                               &kp N4          &kp N6          &kp N8
                                                             &trans                  &trans
             >;
         };
