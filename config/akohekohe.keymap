@@ -108,13 +108,30 @@
     };
 
     // TODO:
-    //   - Implement magic keys
     //   - Add left-handed combos for bspc and enter
     //   - Figure out what to do with the empty leader key
     //   - Add bluetooth functionality
 
     behaviors {
-        // Implement magic keys
+        compatible = "zmk,behaviors";
+
+        ad_lmagic: adaptive_magic_left {
+            compatible = "zmk,behavior-antecedent-morph";
+            #binding-cells = <0>;
+            defaults = <&key_repeat>;
+            antecdents = <A C K E D U>
+            bindings = <&able>, <&kp K>, <&kp N>, <&kp Y>, <&kp M>, <&kp Y>;
+            label = "AD_LMAGIC";
+        };
+
+        ad_rmagic: adaptive_magic_right {
+            compatible = "zmk,behavior-antecedent-morph";
+            #binding-cells = <0>;
+            defaults = <&key_repeat>;
+            antecdents = <DOT I Y R>
+            bindings = <&kp SLASH>, <&ing>, <&you>, <&kp L>;
+            label = "AD_RMAGIC";
+        };
     };
 
     keymap {
@@ -124,7 +141,7 @@
             bindings = <
                     &kp P           &kp L           &kp M           &none   &none           &kp F           &kp O           &kp U
         &kp S       &kp C           &kp R           &kp T           &none   &none           &kp N           &kp A           &kp I           &kp E
-                    &kp G           &key_repeat     &kp D                                   &kp H           &key_repeat     &kp Y
+                    &kp G           &ad_lmagic      &kp D                                   &kp H           &ad_rmagic      &kp Y
                                                             &sl 2                   &kp SPACE
             >;
         };
