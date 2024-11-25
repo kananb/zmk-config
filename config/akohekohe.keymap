@@ -84,28 +84,24 @@
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp Q &kp U>;
-            label = "QU";
         };
 
         able: able {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp B &kp L &kp E>;
-            label = "ABLE";
         };
 
         ing: ing {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp N &kp G>;
-            label = "ING";
         };
 
         you: you {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp O &kp U>;
-            label = "YOU";
         };
     };
 
@@ -115,24 +111,20 @@
     //   - Add bluetooth functionality
 
     behaviors {
-        compatible = "zmk,behaviors";
-
         ad_lmagic: adaptive_magic_left {
             compatible = "zmk,behavior-antecedent-morph";
             #binding-cells = <0>;
             defaults = <&key_repeat>;
-            antecdents = <A C K E D U>
+            antecedents = <A C K E D U>;
             bindings = <&able>, <&kp K>, <&kp N>, <&kp Y>, <&kp M>, <&kp Y>;
-            label = "AD_LMAGIC";
         };
 
         ad_rmagic: adaptive_magic_right {
             compatible = "zmk,behavior-antecedent-morph";
             #binding-cells = <0>;
             defaults = <&key_repeat>;
-            antecdents = <DOT I Y R>
+            antecedents = <DOT I Y R>;
             bindings = <&kp SLASH>, <&ing>, <&you>, <&kp L>;
-            label = "AD_RMAGIC";
         };
     };
 
