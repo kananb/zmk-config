@@ -151,9 +151,9 @@
 
         alpha1 {
             bindings = <
-                    &kp P           &kp L           &kp M           &none   &none           &kp F           &kp O           &kp U
+                    &kp G           &kp L           &kp M           &none   &none           &kp F           &kp O           &kp U
         &kp S       &kp C           &kp R           &kp T           &none   &none           &kp N           &kp A           &kp I           &kp E
-                    &kp G           &ad_lmagic      &kp D                                   &kp H           &ad_rmagic      &kp Y
+                    &kp P           &ad_lmagic      &kp D                                   &kp H           &ad_rmagic      &kp Y
                                                             &sl 2                   &kp SPACE
             >;
         };
