@@ -103,34 +103,58 @@
     };
 
     macros {
-        qu: qu {
+        macro_qu: qu {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp Q &kp U>;
         };
 
-        able: able {
+        macro_able: able {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp B &kp L &kp E>;
         };
 
-        ing: ing {
+        macro_ion: ion {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp O &kp N>;
+        };
+
+        macro_ing: ing {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp N &kp G>;
         };
 
-        you: you {
+        macro_you: you {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp O &kp U>;
         };
 
-        ying: ying {
+        macro_ying: ying {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp I &kp N &kp G>;
+        };
+
+        macro_would: would {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp O &kp U &kp L &kp D>;
+        };
+
+        macro_the: _the {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp T &kp H &kp E>;
+        };
+
+        macro_for: _for {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp F &kp O &kp R>;
         };
     };
 
@@ -139,16 +163,16 @@
             compatible = "zmk,behavior-antecedent-morph";
             #binding-cells = <0>;
             defaults = <&key_repeat>;
-            antecedents = <A C K E D U Y>;
-            bindings = <&able>, <&kp K>, <&kp N>, <&kp Y>, <&kp M>, <&kp Y>, <&ying>;
+            antecedents = <A C K E D U Y I N SPACE>;
+            bindings = <&macro_able>, <&kp K>, <&kp N>, <&kp Y>, <&kp M>, <&kp Y>, <&macro_ying>, <&macro_ion>, <&kp F>, <&macro_the>;
         };
 
         ad_rmagic: adaptive_magic_right {
             compatible = "zmk,behavior-antecedent-morph";
             #binding-cells = <0>;
             defaults = <&key_repeat>;
-            antecedents = <DOT I Y R>;
-            bindings = <&kp SLASH>, <&ing>, <&you>, <&kp L>;
+            antecedents = <DOT I Y R W SPACE>;
+            bindings = <&kp SLASH>, <&macro_ing>, <&macro_you>, <&kp L>, <&macro_would>, <&macro_the>;
         };
     };
 
@@ -177,7 +201,7 @@
             bindings = <
                     &kp J           &kp X           &kp Z           &none   &none           &kp BSPC        &kp SQT         &kp ENTER
         &sl 8       &sl 7           &sl 6           &kp W           &none   &none           &kp B           &sl 3           &sl 4           &sl 5
-                    &qu             &kp ESC         &kp V                                   &kp K           &kp COMMA       &kp DOT
+                    &macro_qu       &kp ESC         &kp V                                   &kp K           &kp COMMA       &kp DOT
                                                             &trans                  &trans
             >;
         };
