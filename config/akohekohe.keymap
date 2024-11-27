@@ -126,6 +126,12 @@
             #binding-cells = <0>;
             bindings = <&kp O &kp U>;
         };
+
+        ying: ying {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp I &kp N &kp G>;
+        };
     };
 
     behaviors {
@@ -133,8 +139,8 @@
             compatible = "zmk,behavior-antecedent-morph";
             #binding-cells = <0>;
             defaults = <&key_repeat>;
-            antecedents = <A C K E D U>;
-            bindings = <&able>, <&kp K>, <&kp N>, <&kp Y>, <&kp M>, <&kp Y>;
+            antecedents = <A C K E D U Y>;
+            bindings = <&able>, <&kp K>, <&kp N>, <&kp Y>, <&kp M>, <&kp Y>, <&ying>;
         };
 
         ad_rmagic: adaptive_magic_right {
