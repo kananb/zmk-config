@@ -164,7 +164,7 @@
             #binding-cells = <0>;
             defaults = <&key_repeat>;
             antecedents = <A C K E D U Y I N SPACE>;
-            bindings = <&macro_able>, <&kp K>, <&kp N>, <&kp Y>, <&kp M>, <&kp Y>, <&macro_ying>, <&macro_ion>, <&kp F>, <&macro_the>;
+            bindings = <&macro_able>, <&kp K>, <&kp N>, <&kp Y>, <&kp M>, <&kp Y>, <&macro_ying>, <&macro_ion>, <&kp F>, <&macro_for>;
         };
 
         ad_rmagic: adaptive_magic_right {
