@@ -195,8 +195,8 @@
             compatible = "zmk,behavior-antecedent-morph";
             #binding-cells = <0>;
             defaults = <&key_repeat>;
-            antecedents = <E Y I SPACE>;
-            bindings = <&kp Y>, <&kp E>, <&macro_ion>, <&macro_for>;
+            antecedents = <M E Y I SPACE>;
+            bindings = <&kp P>, <&kp Y>, <&kp E>, <&macro_ion>, <&macro_for>;
         };
 
         ad_rmagic: adaptive_magic_right {
