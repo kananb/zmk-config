@@ -10,126 +10,94 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <behaviors/rgbled_widget.dtsi>
 
-&sl {
-    release-after-ms = <350>;
-};
-&sk {
-    release-after-ms = <350>;
-    quick-release;
-};
-&lt {
-    tapping-term-ms = <125>;
-    quick-tap-ms = <100>;
-    require-prior-idle-ms = <100>;
-    retro-tap;
-    flavor = "balanced";
-};
-&caps_word {
-    continue-list = <UNDER MINUS BSPC DEL>;
-};
+&soft_off { hold-time-ms = <1000>; };
+&sl { release-after-ms = <350>; };
+&sk { release-after-ms = <350>; quick-release; };
+&caps_word { continue-list = <UNDER MINUS BSPC DEL>; };
 
 / {
     combos {
         compatible = "zmk,combos";
         timeout-ms = <50>;
 
-        combo_qu {
-            key-positions = <1 2>;
-            bindings = <&macro_qu>;
-            layers = <7>;
-        };
-
-        combo_q {
-            key-positions = <0 2>;
-            bindings = <&kp Q>;
-            layers = <7>;
-        };
-
-        combo_z {
-            key-positions = <0 1>;
-            bindings = <&kp Z>;
-            layers = <7>;
-        };
-
-        combo_squote {
-            key-positions = <5 6>;
-            bindings = <&kp SQT>;
-            layers = <7>;
-        };
-
-        combo_unds {
-            key-positions = <6 7>;
-            bindings = <&kp UNDER>;
-            layers = <7>;
-        };
-
-        combo_lbspc {
-            key-positions = <10 11>;
+        lbspc {
+            key-positions = <11 20>;
             bindings = <&kp BSPC>;
-            layers = <1 6 7>;
         };
 
-        combo_lent {
-            key-positions = <9 10>;
+        lent {
+            key-positions = <10 19>;
             bindings = <&kp ENTER>;
-            layers = <1 6 7>;
         };
 
-        combo_lalt {
+        lgui {
+            key-positions = <9 18>;
+            bindings = <&kp LGUI>;
+        };
+
+        lalt {
             key-positions = <0 9>;
             bindings = <&sk LALT>;
         };
 
-        combo_lsft {
+        lsft {
             key-positions = <1 10>;
             bindings = <&sk LSHFT>;
         };
 
-        combo_lctl {
+        lctl {
             key-positions = <2 11>;
             bindings = <&sk LCTRL>;
         };
 
-        combo_rctl {
+        rctl {
             key-positions = <5 14>;
             bindings = <&sk RCTRL>;
         };
 
-        combo_rsft {
+        rsft {
             key-positions = <6 15>;
             bindings = <&sk RSHFT>;
         };
 
-        combo_ralt {
+        ralt {
             key-positions = <7 16>;
             bindings = <&sk RALT>;
         };
 
-        combo_rent {
-            key-positions = <15 16>;
+        rgui {
+            key-positions = <16 23>;
+            bindings = <&kp RGUI>;
+        };
+
+        rent {
+            key-positions = <15 22>;
             bindings = <&kp ENTER>;
-            layers = <1 6 7>;
         };
 
-        combo_rbspc {
-            key-positions = <14 15>;
+        rbspc {
+            key-positions = <14 21>;
             bindings = <&kp BSPC>;
-            layers = <1 6 7>;
         };
 
-        combo_capsword {
-            key-positions = <1 10 6 15>;
+        capsword {
+            key-positions = <10 11 14 15>;
             bindings = <&caps_word>;
         };
 
-        combo_boot {
+        boot {
             key-positions = <0 2 5 7>;
             bindings = <&bootloader>;
         };
 
-        combo_nav {
+        soft_off {
+            key-positions = <18 20 21 23>;
+            bindings = <&soft_off>;
+        };
+
+        nav {
             key-positions = <24 25>;
-            bindings = <&sl 6>;
+            bindings = <&sl 1>;
             slow-release;
         };
     };
@@ -165,29 +133,29 @@
             bindings = <&kp O &kp U>;
         };
 
+        macro_ying: ying {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp I &kp N &kp G>;
+        };
+
         macro_would: would {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp O &kp U &kp L &kp D>;
         };
 
-        macro_the: the {
+        macro_the: _the {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp T &kp H &kp E>;
         };
 
-        macro_for: for {
+        macro_for: _for {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp F &kp O &kp R>;
         };
-
-        // macro_vim_w: vim_write {
-        //     compatible = "zmk,behavior-macro";
-        //     #binding-cells = <0>;
-        //     bindings = <&kp ESC &kp COLON &kp W &kp ENT>;
-        // };
     };
 
     behaviors {
@@ -195,27 +163,16 @@
             compatible = "zmk,behavior-antecedent-morph";
             #binding-cells = <0>;
             defaults = <&key_repeat>;
-            antecedents = <M E Y I SPACE>;
-            bindings = <&kp P>, <&kp Y>, <&kp E>, <&macro_ion>, <&macro_for>;
+            antecedents = <A C K E D U Y I N SPACE>;
+            bindings = <&macro_able>, <&kp K>, <&kp N>, <&kp Y>, <&kp M>, <&kp Y>, <&macro_ying>, <&macro_ion>, <&kp F>, <&macro_for>;
         };
 
         ad_rmagic: adaptive_magic_right {
             compatible = "zmk,behavior-antecedent-morph";
             #binding-cells = <0>;
             defaults = <&key_repeat>;
-            antecedents = <C A DOT I Y R W SPACE>;
-            bindings = <&kp K>, <&macro_able>, <&kp SLASH>, <&macro_ing>, <&macro_you>, <&kp L>, <&macro_would>, <&macro_the>;
-        };
-        
-        slt: slow_lt {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            tapping-term-ms = <160>;
-            quick-tap-ms = <115>;
-            require-prior-idle-ms = <120>;
-            retro-tap;
-            bindings = <&mo>, <&kp>;
+            antecedents = <DOT I Y R W SPACE>;
+            bindings = <&kp SLASH>, <&macro_ing>, <&macro_you>, <&kp L>, <&macro_would>, <&macro_the>;
         };
     };
 
@@ -224,72 +181,81 @@
 
         alpha1 {
             bindings = <
-                    &kp D           &kp L           &ad_lmagic      &none   &none           &ad_rmagic      &kp O           &kp U
-        &slt 1 S    &kp H           &kp R           &lt 2 T         &none   &none           &lt 3 N         &kp A           &kp I           &slt 4 E
-                    &none           &none           &none                                   &none           &none           &none
-                                                            &sl 7                   &kp SPACE
-            >;
-        };
-
-        ext {
-            bindings = <
-                    &kp LC(Z)       &kp DEL         &kp ESC         &none   &none           &ind_bat        &ind_con        &bt BT_DISC 0
-        &trans      &kp LC(C)       &kp LC(V)       &kp TAB         &none   &none           &bt BT_PRV      &bt BT_NXT      &bt BT_SEL 0    &bt BT_CLR
-                    &none           &none           &none                                   &none           &none           &none
-                                                            &trans                  &trans
-            >;
-        };
-
-        sym_ops {
-            bindings = <
-                    &kp PIPE        &kp AMPS        &none           &none   &none           &kp CARET       &kp ASTRK       &kp SLASH
-        &kp BSLH    &kp LT          &kp GT          &trans          &none   &none           &kp EQUAL       &kp PLUS        &kp MINUS       &kp EXCL
-                    &none           &none           &none                                   &none           &none           &none
-                                                            &trans                  &trans
-            >;
-        };
-
-        sym_brc {
-            bindings = <
-                    &kp LBRC        &kp RBRC        &kp DQT         &none   &none           &none           &kp HASH        &kp TILDE
-        &kp QMARK   &kp LPAR        &kp RPAR        &kp SEMI        &none   &none           &trans          &kp AT          &kp DLLR        &kp PRCNT
-                    &none           &none           &none                                   &none           &none           &none
-                                                            &trans                  &trans
-            >;
-        };
-
-        num {
-            bindings = <
-                    &kp MINUS       &kp N6          &kp N7          &none   &none           &kp N8          &kp N9          &kp PLUS
-        &kp DOT     &kp N0          &kp N1          &kp N2          &none   &none           &kp N3          &kp N4          &kp N5          &trans
-                    &none           &none           &none                                   &none           &none           &none
-                                                            &trans                  &trans
-            >;
-        };
-
-        fun {
-            bindings = <
-                    &kp F7          &kp F8          &kp F9          &none   &none           &kp F10         &kp F11         &kp F12
-        &trans      &kp F1          &kp F2          &kp F3          &none   &none           &kp F4          &kp F5          &kp F6          &trans
-                    &none           &none           &none                                   &none           &none           &none
-                                                            &trans                  &trans
+                    &kp P           &kp L           &kp M           &none   &none           &kp F           &kp O           &kp U
+        &kp S       &kp C           &kp R           &kp T           &none   &none           &kp N           &kp A           &kp I           &kp E
+                    &kp G           &ad_lmagic      &kp D                                   &kp H           &ad_rmagic      &kp Y
+                                                            &sl 2                   &kp SPACE
             >;
         };
 
         nav {
             bindings = <
-                    &kp PG_DN       &kp PG_UP       &kp PSCRN       &none   &none           &none           &kp GRAVE       &none
+                    &kp END         &kp HOME        &none           &none   &none           &kp BSPC        &none           &kp ENTER
         &kp LEFT    &kp DOWN        &kp UP          &kp RIGHT       &none   &none           &sk RCTRL       &sk RSHFT       &sk RALT        &sk RGUI
-                    &none           &none           &none                                   &none           &none           &none
+                    &kp PG_DN       &kp PG_UP       &kp PSCRN                               &kp C_PP        &kp C_VOL_UP    &kp C_VOL_DN
                                                             &trans                  &trans
             >;
         };
 
         alpha2 {
             bindings = <
-                    &kp K           &kp W           &kp G           &none   &none           &kp P           &kp X           &kp J
-        &kp B       &kp F           &kp V           &kp C           &none   &none           &kp M           &kp COMMA       &kp DOT         &kp Y
-                    &none           &none           &none                                   &none           &none           &none
+                    &kp J           &kp X           &kp Z           &none   &none           &kp BSPC        &kp SQT         &kp ENTER
+        &sl 8       &sl 7           &sl 6           &kp W           &none   &none           &kp B           &sl 3           &sl 4           &sl 5
+                    &macro_qu       &kp ESC         &kp V                                   &kp K           &kp COMMA       &kp DOT
+                                                            &trans                  &trans
+            >;
+        };
+
+        sym_brc {
+            bindings = <
+                    &kp LBRC        &kp RBRC        &kp DQT         &none   &none           &none           &none           &none
+        &kp QMARK   &kp LPAR        &kp RPAR        &kp SEMI        &none   &none           &none           &trans          &none           &none
+                    &kp LBKT        &kp RBKT        &kp COLON                               &none           &none           &none
+                                                            &trans                  &trans
+            >;
+        };
+
+        sym_ops {
+            bindings = <
+                    &kp SLASH       &kp ASTRK       &kp AMPS        &none   &none           &none           &none           &none
+        &kp EXCL    &kp MINUS       &kp PLUS        &kp EQUAL       &none   &none           &none           &none           &trans          &none
+                    &kp LT          &kp GT          &kp PIPE                                &none           &none           &none
+                                                            &trans                  &trans
+            >;
+        };
+
+        sym_ext {
+            bindings = <
+                    &kp Q           &kp GRAVE       &kp DQT         &none   &none           &bt BT_DISC 0   &bt BT_DISC 1   &bt BT_DISC 2
+        &kp DLLR    &kp BSLH        &kp AT          &kp UNDER       &none   &none           &bt BT_SEL 0    &bt BT_SEL 1    &bt BT_SEL 2    &trans
+                    &kp PRCNT       &kp CARET       &kp HASH                                &bt BT_CLR      &ind_bat        &ind_con
+                                                            &trans                  &trans
+            >;
+        };
+
+        num {
+            bindings = <
+                    &none           &none           &none           &none   &none           &kp N3          &kp N5          &kp N7
+        &kp DOT     &kp MINUS       &trans          &kp PLUS        &none   &none           &kp N0          &kp N1          &kp N2          &kp N9
+                    &kp SLASH       &none           &kp ASTRK                               &kp N4          &kp N6          &kp N8
+                                                            &trans                  &trans
+            >;
+        };
+
+        fun {
+            bindings = <
+                    &none           &none           &none           &none   &none           &kp F7          &kp F8          &kp F9
+        &none       &trans          &kp F11         &kp F12         &none   &none           &kp F4          &kp F5          &kp F6          &kp F10
+                    &none           &none           &none                                   &kp F1          &kp F2          &kp F3
+                                                            &trans                  &trans
+            >;
+        };
+
+        ext {
+            bindings = <
+                    &none           &kp DEL         &kp ESC         &none   &none           &none           &none           &none
+        &trans      &kp LC(C)       &kp LC(V)       &kp TAB         &none   &none           &none           &none           &none           &none
+                    &kp LC(A)       &kp LC(Z)       &kp LC(Y)                               &none           &none           &none
                                                             &trans                  &trans
             >;
         };

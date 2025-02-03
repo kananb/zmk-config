@@ -10,10 +10,23 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <behaviors/rgbled_widget.dtsi>
 
-&sl { release-after-ms = <350>; };
-&sk { release-after-ms = <350>; quick-release; };
-&lt { tapping-term-ms = <125>; quick-tap-ms = <100>; require-prior-idle-ms = <100>; retro-tap; flavor = "balanced"; };
-&caps_word { continue-list = <UNDER MINUS BSPC DEL>; };
+&sl {
+    release-after-ms = <350>;
+};
+&sk {
+    release-after-ms = <350>;
+    quick-release;
+};
+&lt {
+    tapping-term-ms = <125>;
+    quick-tap-ms = <100>;
+    require-prior-idle-ms = <100>;
+    retro-tap;
+    flavor = "balanced";
+};
+&caps_word {
+    continue-list = <UNDER MINUS BSPC DEL>;
+};
 
 / {
     combos {
@@ -21,33 +34,45 @@
         timeout-ms = <50>;
 
         combo_qu {
-            key-positions = <10 11>;
+            key-positions = <1 2>;
             bindings = <&macro_qu>;
             layers = <7>;
         };
 
         combo_q {
-            key-positions = <9 11>;
+            key-positions = <0 2>;
             bindings = <&kp Q>;
             layers = <7>;
         };
 
         combo_z {
-            key-positions = <1 2>;
+            key-positions = <0 1>;
             bindings = <&kp Z>;
             layers = <7>;
         };
 
         combo_squote {
-            key-positions = <14 15>;
+            key-positions = <5 6>;
             bindings = <&kp SQT>;
             layers = <7>;
         };
 
         combo_unds {
-            key-positions = <5 6>;
+            key-positions = <6 7>;
             bindings = <&kp UNDER>;
             layers = <7>;
+        };
+
+        combo_lbspc {
+            key-positions = <10 11>;
+            bindings = <&kp BSPC>;
+            layers = <1 6 7>;
+        };
+
+        combo_lent {
+            key-positions = <9 10>;
+            bindings = <&kp ENTER>;
+            layers = <1 6 7>;
         };
 
         combo_lalt {
@@ -80,6 +105,18 @@
             bindings = <&sk RALT>;
         };
 
+        combo_rent {
+            key-positions = <15 16>;
+            bindings = <&kp ENTER>;
+            layers = <1 6 7>;
+        };
+
+        combo_rbspc {
+            key-positions = <14 15>;
+            bindings = <&kp BSPC>;
+            layers = <1 6 7>;
+        };
+
         combo_capsword {
             key-positions = <1 10 6 15>;
             bindings = <&caps_word>;
@@ -95,6 +132,11 @@
             bindings = <&sl 6>;
             slow-release;
         };
+
+        combo_fun {
+            key-positions = <8 17>;
+            bindings = <&sl 5>;
+        }
     };
 
     macros {
@@ -134,17 +176,23 @@
             bindings = <&kp O &kp U &kp L &kp D>;
         };
 
-        macro_the: _the {
+        macro_the: the {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp T &kp H &kp E>;
         };
 
-        macro_for: _for {
+        macro_for: for {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp F &kp O &kp R>;
         };
+
+        // macro_vim_w: vim_write {
+        //     compatible = "zmk,behavior-macro";
+        //     #binding-cells = <0>;
+        //     bindings = <&kp ESC &kp COLON &kp W &kp ENT>;
+        // };
     };
 
     behaviors {
@@ -152,8 +200,8 @@
             compatible = "zmk,behavior-antecedent-morph";
             #binding-cells = <0>;
             defaults = <&key_repeat>;
-            antecedents = <E Y I SPACE>;
-            bindings = <&kp Y>, <&kp E>, <&macro_ion>, <&macro_for>;
+            antecedents = <M E Y I SPACE>;
+            bindings = <&kp P>, <&kp Y>, <&kp E>, <&macro_ion>, <&macro_for>;
         };
 
         ad_rmagic: adaptive_magic_right {
@@ -163,6 +211,17 @@
             antecedents = <C A DOT I Y R W SPACE>;
             bindings = <&kp K>, <&macro_able>, <&kp SLASH>, <&macro_ing>, <&macro_you>, <&kp L>, <&macro_would>, <&macro_the>;
         };
+        
+        slt: slow_lt {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "balanced";
+            tapping-term-ms = <160>;
+            quick-tap-ms = <115>;
+            require-prior-idle-ms = <120>;
+            retro-tap;
+            bindings = <&mo>, <&kp>;
+        };
     };
 
     keymap {
@@ -171,7 +230,7 @@
         alpha1 {
             bindings = <
                     &kp D           &kp L           &ad_lmagic      &none   &none           &ad_rmagic      &kp O           &kp U
-        &lt 1 S     &kp H           &kp R           &lt 2 T         &none   &none           &lt 3 N         &kp A           &kp I           &lt 4 E
+        &slt 1 S    &kp H           &kp R           &lt 2 T         &none   &none           &lt 3 N         &kp A           &kp I           &slt 4 E
                     &none           &none           &none                                   &none           &none           &none
                                                             &sl 7                   &kp SPACE
             >;
@@ -179,7 +238,7 @@
 
         ext {
             bindings = <
-                    &kp LC(Z)       &kp DEL         &kp ESC         &none   &none           &ind_bat        &ind_con        &none
+                    &kp LC(Z)       &kp DEL         &kp ESC         &none   &none           &ind_bat        &ind_con        &bt BT_DISC 0
         &trans      &kp LC(C)       &kp LC(V)       &kp TAB         &none   &none           &bt BT_PRV      &bt BT_NXT      &bt BT_SEL 0    &bt BT_CLR
                     &none           &none           &none                                   &none           &none           &none
                                                             &trans                  &trans
@@ -224,7 +283,7 @@
 
         nav {
             bindings = <
-                    &kp PG_DN       &kp PG_UP       &kp PSCRN       &none   &none           &kp BSPC        &kp GRAVE       &kp ENTER
+                    &kp PG_DN       &kp PG_UP       &kp PSCRN       &none   &none           &none           &kp GRAVE       &none
         &kp LEFT    &kp DOWN        &kp UP          &kp RIGHT       &none   &none           &sk RCTRL       &sk RSHFT       &sk RALT        &sk RGUI
                     &none           &none           &none                                   &none           &none           &none
                                                             &trans                  &trans
