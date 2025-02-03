@@ -34,31 +34,31 @@
         timeout-ms = <50>;
 
         combo_qu {
-            key-positions = <10 11>;
+            key-positions = <1 2>;
             bindings = <&macro_qu>;
             layers = <7>;
         };
 
         combo_q {
-            key-positions = <9 11>;
+            key-positions = <0 2>;
             bindings = <&kp Q>;
             layers = <7>;
         };
 
         combo_z {
-            key-positions = <1 2>;
+            key-positions = <0 1>;
             bindings = <&kp Z>;
             layers = <7>;
         };
 
         combo_squote {
-            key-positions = <14 15>;
+            key-positions = <5 6>;
             bindings = <&kp SQT>;
             layers = <7>;
         };
 
         combo_unds {
-            key-positions = <5 6>;
+            key-positions = <6 7>;
             bindings = <&kp UNDER>;
             layers = <7>;
         };
@@ -112,7 +112,7 @@
         };
 
         combo_rbspc {
-            key-positions = <14 6>;
+            key-positions = <14 15>;
             bindings = <&kp BSPC>;
             layers = <1 6 7>;
         };
@@ -186,7 +186,7 @@
         macro_vim_w: vim_write {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp ESC>, <&macro_wait_time 15>, <&kp COLON &kp W &kp ENT>;
+            bindings = <&kp ESC &kp COLON &kp W &kp ENT>;
         };
     };
 
@@ -215,7 +215,7 @@
             quick-tap-ms = <115>;
             require-prior-idle-ms = <120>;
             retro-tap;
-            bindings = <&kp>, <&kp>;
+            bindings = <&mo>, <&kp>;
         };
     };
 
