@@ -97,7 +97,7 @@
 
         alt_num {
             key-positions = <24 25>;
-            bindings = <&sl 2>;
+            bindings = <&sl 1 &sl 2>;
             slow-release;
         };
     };
@@ -174,6 +174,17 @@
             antecedents = <DOT I Y R W SPACE>;
             bindings = <&kp SLASH>, <&macro_ing>, <&macro_you>, <&kp L>, <&macro_would>, <&macro_the>;
         };
+
+        bmt: better_mod_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            quick-tap-ms = <150>;
+            tapping-term-ms = <200>;
+            bindings = <&kp>, <&kp>;
+            hold-trigger-key-positions = <14 15 16 17>;
+            display-name = "Better Mod-Tap";
+        };
     };
 
     keymap {
@@ -191,7 +202,7 @@
         nav {
             bindings = <
                     &kp SPACE       &kp TAB         &kp T           &none   &none           &kp F           &kp A           &kp ENTER
-        &kp LGUI    &kp LALT        &kp LSHIFT      &kp LCTRL       &none   &none           &mt RCTRL LEFT  &mt RSHFT UP    &mt RALT DOWN   &mt RGUI RIGHT
+        &kp LGUI    &kp LALT        &kp LSHIFT      &kp LCTRL       &none   &none           &bmt RCTRL LEFT &bmt RSHFT UP  &bmt RALT DOWN   &bmt RGUI RIGHT
                     &kp Q           &kp ESC         &kp COLON                               &kp B           &kp W           &kp E
                                                             &sl 2                   &trans
             >;
@@ -201,7 +212,7 @@
             bindings = <
                     &trans          &trans          &kp PSCRN       &none   &none           &kp N3          &kp N5          &kp N7
         &trans      &trans          &trans          &trans          &none   &none           &kp N0          &kp N1          &kp N2          &kp N9
-                    &kp C_PP        &kp C_VOL_UP    &kp C_VOL_DN                            &kp N4          &kp N6          &kp N8
+                    &kp C_PP        &kp C_VOL_DN    &kp C_VOL_UP                            &kp N4          &kp N6          &kp N8
                                                             &trans                  &trans
             >;
         };
