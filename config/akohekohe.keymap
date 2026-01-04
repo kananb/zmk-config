@@ -95,9 +95,9 @@
             bindings = <&soft_off>;
         };
 
-        nav {
+        alt_num {
             key-positions = <24 25>;
-            bindings = <&sl 1>;
+            bindings = <&sl 2>;
             slow-release;
         };
     };
@@ -190,7 +190,7 @@
 
         nav {
             bindings = <
-                    &none           &kp TAB         &kp T           &none   &none           &kp F           &kp A           &kp ENTER
+                    &kp SPACE       &kp TAB         &kp T           &none   &none           &kp F           &kp A           &kp ENTER
         &kp LGUI    &kp LALT        &kp LSHIFT      &kp LCTRL       &none   &none           &mt RCTRL LEFT  &mt RSHFT UP    &mt RALT DOWN   &mt RGUI RIGHT
                     &kp Q           &kp ESC         &kp COLON                               &kp B           &kp W           &kp E
                                                             &sl 2                   &trans
