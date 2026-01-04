@@ -97,7 +97,7 @@
 
         alt_num {
             key-positions = <24 25>;
-            bindings = <&sl 1 &sl 2>;
+            bindings = <&sl 2>;
             slow-release;
         };
     };
@@ -185,6 +185,16 @@
             hold-trigger-key-positions = <14 15 16 17>;
             display-name = "Better Mod-Tap";
         };
+
+        blt: better_layer_tap {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&kp>;
+            display-name = "Better Layer-Tap";
+            require-prior-idle-ms = <200>;
+        };
     };
 
     keymap {
@@ -195,7 +205,7 @@
                     &kp P           &kp L           &kp M           &none   &none           &kp F           &kp O           &kp U
         &kp S       &kp C           &kp R           &kp T           &none   &none           &kp N           &kp A           &kp I           &kp E
                     &kp G           &ad_lmagic      &kp D                                   &kp H           &ad_rmagic      &kp Y
-                                                            &sl 3                   &lt 1 SPACE
+                                                            &sl 3                   &blt 1 SPACE
             >;
         };
 
@@ -210,8 +220,8 @@
 
         alt_num {
             bindings = <
-                    &trans          &trans          &kp PSCRN       &none   &none           &kp N3          &kp N5          &kp N7
-        &trans      &trans          &trans          &trans          &none   &none           &kp N0          &kp N1          &kp N2          &kp N9
+                    &kp SPACE       &kp TAB         &kp PSCRN       &none   &none           &kp N3          &kp N5          &kp N7
+        &kp LGUI    &kp LALT        &kp LSHIFT      &kp LCTRL       &none   &none           &kp N0          &kp N1          &kp N2          &kp N9
                     &kp C_PP        &kp C_VOL_DN    &kp C_VOL_UP                            &kp N4          &kp N6          &kp N8
                                                             &trans                  &trans
             >;
