@@ -18,9 +18,9 @@ manifest:
       revision: v0.3
     - name: zmk-keyboards-akohekohe
       remote: grassfedreeve
-      revision: v0.3
+      revision: main
     - name: zmk-antecedent-morph
       remote: ssbb
-      revision: v0.3
+      revision: v1
   self:
     path: config
