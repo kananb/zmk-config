@@ -15,12 +15,12 @@ manifest:
       import: app/west.yml
     - name: zmk-rgbled-widget
       remote: caksoylar
-      revision: main
+      revision: v0.3
     - name: zmk-keyboards-akohekohe
       remote: grassfedreeve
-      revision: main
+      revision: v0.3
     - name: zmk-antecedent-morph
       remote: ssbb
-      revision: v1
+      revision: v0.3
   self:
     path: config
